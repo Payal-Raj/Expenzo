@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expanzo | Expense Tracker</title>
+
+    <!-----------------------Bootstrap CSS------------------->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!-----------------------Bootstrap JS-------------------->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-----------------------My CSS-------------------->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-----------------------Google fonts-------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-----------------------AOS Library-------------------->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="img/logo.png" alt="Logo" />
+        <h1>EXPANZO</h1>
+      </div>
+      <div class="btns">
+        <span id="userNameDisplay"></span> 
+        <button> <a href="index.html" class="text-dark text-decoration-none">Sign out</a></button>
+      </div>
+    </header>
+    <h1 class="text-center" id="expenseHeading">Expense Tracker</h1>
+    <main id="expenseMain" >
+        <section id="expenseSec1">
+            <div>
+                <h5>Total Balance</h5>
+                <span id="balance">$0.00</span>
+            </div>
+            <div>
+                <h5>Income</h5>
+                <span id="income">$0.00</span>
+            </div>
+            <div>
+                <h5>Expense</h5>
+                <span id="expense">$0.00</span>
+            </div>
+        </section>
+
+        <section>
+            <h3>Transaction</h3>
+            <ul id="transactionList"></ul>
+            <div id="status"></div>
+        </section>  
+
+        <section id="expenseSec2">
+            <h3>Add Transaction</h3>
+
+            <form id="transactionForm">
+                <div>
+                    <label for="type">
+                        <input type="checkbox" name="type" id="type">
+                        <div class="option">
+                            <span>Expense</span>
+                            <span>Income</span>
+                        </div>
+                    </label>
+                </div>
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" required/>
+                </div>
+                <div>
+                    <label for="amount">Amount</label>
+                    <input type="number" name="amount" value="0" min="0.01" step="0.01" required/>
+                </div>
+                <div>
+                    <label for="date">Date</label>
+                    <input type="date" name="date" required/>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+    
+    <script>
+      AOS.init();
+    </script>
+    <script>
+        const userNameDisplay = document.getElementById('userNameDisplay');
+        const fullName = localStorage.getItem('fullName');
+        if (fullName) {
+          userNameDisplay.textContent = `Welcome, ${fullName}!`;
+        }
+      </script>
+
+      <!-----------------------My JS-------------------->
+    <script src="Script.js"></script>
+  </body>
+</html>
